@@ -1,0 +1,29 @@
+
+                                                        PAGINATION
+Pagination in Django Rest Framework refers to the process of breaking down a large set of data into smaller, more manageable chunks or pages. This is particularly useful when dealing with APIs that return large datasets, as it helps to improve performance, reduce network overhead, and make the data more user-friendly.
+
+
+Now let's discuss the two types of pagination supported by DRF:
+
+
+1        PageNumberPagination (Traditional Pagination):
+
+PageNumberPagination is the default pagination class used in DRF.
+It paginates the data using page numbers, and the clients can navigate through the paginated data by providing the page number in the request query parameters (e.g., ?page=2).
+By default, it returns 10 items per page, but you can customize the page size using the PAGE_SIZE setting in your DRF settings file or by explicitly specifying it in your views.
+The paginated response will include metadata like count (total number of items), next (link to the next page), previous (link to the previous page), and results (the data for the current page).
+
+
+2 . LimitOffsetPagination
+
+LimitOffsetPagination is another type of pagination offered by Django Rest Framework (DRF). It provides a flexible way of paginating data by using two query parameters in the API request: limit and offset. This pagination method allows clients to specify the number of items they want to retrieve (limit) and the starting point in the dataset (offset).
+
+To get the first 10 items, the client would use ?limit=10&offset=0.
+To get the next 10 items, the client would use ?limit=10&offset=10.
+
+3. Cursor Pagination
+
+ This pagination style only presents forward and reverse controls, and does not allow the client to navigate to arbitrary positions.
+
+ Cursor based pagination requires that there is a unique, unchanging ordering of items in the result set. This ordering might typically be a creation timestamp on the records, as this presents a consistent ordering to paginate against.
+ You can modify the ordering by overriding the 'ordering' attribute on the pagination class.
